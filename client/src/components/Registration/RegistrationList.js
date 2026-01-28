@@ -44,8 +44,8 @@ const RegistrationList = () => {
   const fetchRegistrations = async () => {
     try {
       const endpoint = user.role === 'admin' 
-        ? 'http://localhost:5000/api/registrations'
-        : 'http://localhost:5000/api/registrations/my-registrations';
+        ? `${process.env.REACT_APP_API_URL}/api/registrations`
+        : `${process.env.REACT_APP_API_URL}/api/registrations/my-registrations`;
       
       const res = await axios.get(endpoint);
       setRegistrations(res.data);
@@ -81,7 +81,7 @@ const RegistrationList = () => {
     }
 
     try {
-      await axios.delete(`http://localhost:5000/api/registrations/${id}`);
+      await axios.delete(`${process.env.REACT_APP_API_URL}/api/registrations/${id}`);
       toast.success('Registration deleted successfully');
       fetchRegistrations();
     } catch (err) {
@@ -121,7 +121,7 @@ const RegistrationList = () => {
   const handleUpdate = async () => {
     try {
       await axios.put(
-        `http://localhost:5000/api/registrations/${editingRegistration._id}`,
+        `${process.env.REACT_APP_API_URL}/api/registrations/${editingRegistration._id}`,
         editFormData
       );
       toast.success('Registration updated successfully');

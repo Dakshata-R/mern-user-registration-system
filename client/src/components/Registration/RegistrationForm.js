@@ -43,7 +43,7 @@ const RegistrationForm = () => {
     e.preventDefault();
     
     try {
-      await axios.post('http://localhost:5000/api/registrations', formData);
+      await axios.post(`${process.env.REACT_APP_API_URL}/registrations`, formData);
       toast.success('Registration submitted successfully!');
       navigate('/dashboard');
     } catch (err) {
