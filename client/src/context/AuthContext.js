@@ -23,7 +23,7 @@ export const AuthProvider = ({ children }) => {
       // Set header BEFORE making request
       axios.defaults.headers.common['x-auth-token'] = token;
       
-      const res = await axios.get(`${process.env.REACT_APP_API_URL}api/auth/me`, {
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/auth/me`, {
         headers: {
           'x-auth-token': token
         }
@@ -42,7 +42,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const res = await axios.post(`${process.env.REACT_APP_API_URL}api/auth/login`, {
+      const res = await axios.post(`${process.env.REACT_APP_API_URL}/auth/login`, {
         email,
         password
       });
@@ -61,7 +61,7 @@ export const AuthProvider = ({ children }) => {
 
   const register = async (name, email, password, role) => {
     try {
-      const res = await axios.post(`${process.env.REACT_APP_API_URL}api/auth/register`, {
+      const res = await axios.post(`${process.env.REACT_APP_API_URL}/auth/register`, {
         name,
         email,
         password,
@@ -83,7 +83,7 @@ export const AuthProvider = ({ children }) => {
 
   const logout = async () => {
     try {
-      await axios.post(`${process.env.REACT_APP_API_URL}api/auth/logout`);
+      await axios.post(`${process.env.REACT_APP_API_URL}/auth/logout`);
     } catch (err) {
       console.error(err);
     } finally {

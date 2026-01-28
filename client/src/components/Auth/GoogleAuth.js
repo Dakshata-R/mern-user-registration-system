@@ -17,7 +17,7 @@ const GoogleAuth = () => {
     if (credentialResponse.credential) {
       toast.loading('Authenticating with Google...');
       
-      axios.post(`${process.env.REACT_APP_API_URL}api/auth/google`, {
+      axios.post(`${process.env.REACT_APP_API_URL}/auth/google`, {
         token: credentialResponse.credential
       }, {
         headers: {
